@@ -18,6 +18,7 @@ public class FillToolBar {
     this.toolBar = toolBar;
   }
 
+	// create a fill button toolbar and add all buttons to a list
   public FillToolBar() {
     toolBar = new JToolBar();
     toolBar.setName("Fill");

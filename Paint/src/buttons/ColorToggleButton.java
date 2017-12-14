@@ -13,58 +13,60 @@ import ids.ColorIDs;
 
 public class ColorToggleButton implements ActionListener {
 
-  private JToggleButton toggleButton;
-  private boolean selected;
-  private ColorIDs colorId;
-  private Color color;
+	private JToggleButton toggleButton;
+	private boolean selected;
+	private ColorIDs colorId;
+	private Color color;
 
-  private static ArrayList<ColorToggleButton> allColorToggleButtons = new ArrayList<ColorToggleButton>();
+	private static ArrayList<ColorToggleButton> allColorToggleButtons = new ArrayList<ColorToggleButton>();
 
-  public ColorToggleButton(ImageIcon icon, ColorIDs id, Color color) {
-    toggleButton = new JToggleButton(icon);
-    toggleButton.addActionListener(this);
-    this.colorId = id;
-    this.color = color;
+	public ColorToggleButton(ImageIcon icon, ColorIDs id, Color color) {
+		toggleButton = new JToggleButton(icon);
+		toggleButton.addActionListener(this);
+		this.colorId = id;
+		this.color = color;
 
-    allColorToggleButtons.add(this);
-  }
+		allColorToggleButtons.add(this);
+	}
 
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    AbstractButton abstractButton = (AbstractButton) e.getSource();
-    selected = abstractButton.getModel().isSelected();
-    for (ColorToggleButton toggleButton : allColorToggleButtons) {
-      if (toggleButton != this) {
-        toggleButton.toggleButton.setSelected(false);
-        toggleButton.selected = false;
-      }
-    }
-  }
+	// select the button and deselect the others
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		AbstractButton abstractButton = (AbstractButton) e.getSource();
+		selected = abstractButton.getModel().isSelected();
+		for (ColorToggleButton toggleButton : allColorToggleButtons) {
+			if (toggleButton != this) {
+				toggleButton.toggleButton.setSelected(false);
+				toggleButton.selected = false;
+			}
+		}
+	}
 
-  public static Color getButtonColor() {
-    for (ColorToggleButton colorButton : ColorToggleButton.getAllColorToggleButtons()) {
-      if (colorButton.selected) {
-        return colorButton.color;
-      }
-    }
+	// get the color of the selected button, if none is selected, return black
+	public static Color getButtonColor() {
+		for (ColorToggleButton colorButton : ColorToggleButton.getAllColorToggleButtons()) {
+			if (colorButton.selected) {
+				return colorButton.color;
+			}
+		}
 
-    return Color.black;
-  }
+		return Color.black;
+	}
 
-  public JToggleButton getColorToggleButton() {
-    return this.toggleButton;
-  }
+	public JToggleButton getColorToggleButton() {
+		return this.toggleButton;
+	}
 
-  public ColorIDs getColorID() {
-    return this.colorId;
-  }
+	public ColorIDs getColorID() {
+		return this.colorId;
+	}
 
-  public Color getColor() {
-    return this.color;
-  }
+	public Color getColor() {
+		return this.color;
+	}
 
-  public static ArrayList<ColorToggleButton> getAllColorToggleButtons() {
-    return allColorToggleButtons;
-  }
+	public static ArrayList<ColorToggleButton> getAllColorToggleButtons() {
+		return allColorToggleButtons;
+	}
 
 }

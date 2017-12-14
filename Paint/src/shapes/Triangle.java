@@ -3,10 +3,10 @@ package shapes;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
 
-public class Triangle extends DrawedShape {
+public class Triangle extends DrawnShape {
 
   private Point2D up, left, right;
-  private int[] x = new int[3], y = new int[3];
+  private int[] x = new int[3], y = new int[3]; // the x and y coordinates of the edges of the triangle
   private Polygon polygon;
 
   public int[] getX() {

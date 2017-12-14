@@ -5,11 +5,11 @@ import java.awt.Shape;
 
 import ids.ShapeIDs;
 
-public class DrawedShape {
+public class DrawnShape {
 
   private Shape shape;
   private Color color;
-  private boolean filled = false, deleted = false;
+  private boolean filled = false, wiped = false;
   private ShapeIDs id;
 
   public Shape getShape() {
@@ -44,12 +44,12 @@ public class DrawedShape {
     this.id = id;
   }
 
-  public boolean isDeleted() {
-    return deleted;
+  public boolean isWiped() {
+    return wiped;
   }
 
-  public void setDeleted(boolean deleted) {
-    this.deleted = deleted;
+  public void setWiped(boolean wiped) {
+    this.wiped = wiped;
   }
 
 }
